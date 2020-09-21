@@ -1,0 +1,17 @@
+.custom-list li{
+    list-style-type: none;
+    position: relative;
+    margin-top: 1em;
+}
+
+.custom-list li::before{
+    position: absolute;
+    content: '\f00c';
+    font-family: FontAwesome;
+    width: 0.5em;
+    height: 0.5em;
+    left: -1.63em;
+    top:0.25em;
+    color: green;
+    font-size: .8em;
+}
