@@ -12,6 +12,7 @@ class Calendar {
  
     
         this.buildTable();
+        this.bindEvents()
         this.upDateTable()
     }
 
@@ -37,6 +38,7 @@ class Calendar {
                 }
                 else{
                     td.style.borderStyle ='none'
+                    td.innerHTML = ''
                 }
                 
             }
@@ -54,6 +56,32 @@ class Calendar {
         this.monthLength = Math.floor((this.monthEnd - this.monthStart) / (1000 * 60 * 60 * 24));
     
       }
+
+      next(){
+          let month = this.date.getMonth()
+
+          if(month == 11){
+              this.date = new Date(this.date.getFullYear()+1,0,1)
+          }
+          else{
+              this.date = new Date(this.date.getFullYear(), month +1 , 1)
+          }
+
+          this.upDateTable()
+      }
+
+      prev(){
+        let month = this.date.getMonth()
+
+        if(month == 0){
+            this.date = new Date(this.date.getFullYear()-1,11,1)
+        }
+        else{
+            this.date = new Date(this.date.getFullYear(), month -1 , 1)
+        }
+
+        this.upDateTable()
+    }
 
     buildTable(){
         let table = document.createElement('table');
@@ -87,5 +115,22 @@ class Calendar {
         this.container.appendChild(document.createElement('header'))
         this.container.appendChild(body)
     }
+
+    bindEvents(){
+        this.buttons ={}
+
+        this.buttons.prev = document.createElement('button')
+        this.buttons.next = document.createElement('button')
+
+        this.buttons.prev.innerHTML = 'Anterior'
+        this.buttons.next.innerHTML = 'Siguente'
+
+        this.container.querySelector('.body').appendChild(this.buttons.prev)
+        this.container.querySelector('.body').appendChild(this.buttons.next)
+
+        this.buttons.prev.addEventListener('click',()=> this.prev())
+        this.buttons.next.addEventListener('click',()=> this.next())
+    }
+
    
 }

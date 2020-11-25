@@ -32,3 +32,18 @@
 .calendar-style tr td{
     border: solid 1px #eeeeee;
 }
+
+.calendar-style button{
+    display: inline-block;
+    width: 50%;
+    padding: 6px;
+    border: none;
+    outline: none;
+    background-color: #ef3f61;
+    color: white;
+    cursor: pointer;
+}
+
+.calendar-style button:hover{
+    background-color: #db3b61;
+}
